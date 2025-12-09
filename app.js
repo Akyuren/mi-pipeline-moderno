@@ -5,7 +5,7 @@ const app = express();
 app.get('/', (req, res) => {
     res.json({
         mensaje: "Hola! Soy una API corriendo en Docker",
-        estado: "fallo en el sistema",
+        estado: "ok",
         fecha: new Date()
     });
 });

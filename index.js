@@ -1,6 +1,6 @@
 // Una funcion simple que suma
 function suma(a, b) {
-  return a + b;
+  return a - b;
 }
 
 // Exportamos la funcion para poder probarla

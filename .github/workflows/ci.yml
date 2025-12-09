@@ -1,0 +1,34 @@
+name: Pipeline CI Node.js
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Bajamos el código del repositorio
+    - name: Checkout del código
+      uses: actions/checkout@v4
+
+    # 2. Preparamos el entorno con Node.js
+    - name: Configurar Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+
+    # 3. Instalamos las dependencias (incluyendo ESLint y Jest)
+    - name: Instalar dependencias
+      run: npm ci
+
+    # 4. Verificamos la calidad del código (Lint)
+    - name: Ejecutar Linter
+      run: npm run lint
+
+    # 5. Ejecutamos las pruebas funcionales (Tests)
+    - name: Ejecutar Tests
+      run: npm run test
